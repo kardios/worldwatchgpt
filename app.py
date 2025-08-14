@@ -113,14 +113,6 @@ def call_gpt5_report(
         tools=build_tools(iso2, search_context_size),
     )
 
-    # IMPORTANT: GPT-5 only supports tool_choice 'auto' for web_search_preview
-    if constrain_to_search_auto:
-        kwargs["tool_choice"] = {
-            "type": "allowed_tools",
-            "mode": "auto",  # not 'required' to avoid 400
-            "tools": [{"type": "web_search_preview"}],
-        }
-
     if prev_id:
         kwargs["previous_response_id"] = prev_id
     if preambles:
