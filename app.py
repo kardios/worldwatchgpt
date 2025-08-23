@@ -69,10 +69,10 @@ if st.sidebar.button("Generate Reports"):
             with st.spinner(f"Generating perspective for {country}..."):
                 try:
                     response = client.responses.create(
-                        model="gpt-5",
+                        model="gpt-5-mini",
                         input=prompt,
-                        reasoning={"effort": "medium"},
-                        text={"verbosity": "high"},
+                        reasoning={"effort": "low"},
+                        text={"verbosity": "medium"},
                         tools=[{"type": "web_search"}],
                         tool_choice="auto"
                     )
